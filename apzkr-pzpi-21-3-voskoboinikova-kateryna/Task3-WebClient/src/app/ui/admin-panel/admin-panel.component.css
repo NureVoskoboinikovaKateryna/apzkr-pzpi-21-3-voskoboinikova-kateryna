@@ -1,0 +1,46 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f8f9fa;
+  padding-top: 79px;
+}
+
+#first-element {
+  border-top-right-radius: 10px;
+}
+
+#last-element {
+  border-bottom-right-radius: 10px;
+}
+
+.sidebar a {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+  border: 1px solid darkblue;
+}
+
+.sidebar a:hover {
+  cursor: pointer;
+}
+
+.sidebar a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.content {
+  margin-left: 180px;
+}

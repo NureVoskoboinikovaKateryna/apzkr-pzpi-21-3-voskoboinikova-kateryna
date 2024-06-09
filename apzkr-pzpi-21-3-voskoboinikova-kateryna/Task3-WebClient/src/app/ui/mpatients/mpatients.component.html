@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<div id="content" *ngIf="loaded; else stillLoading">
+  <h2>Перелік працівників лікарні</h2>
+
+  <div class="input-group mb-3">
+    <input type="text"
+           [ngModel]="search"
+           (ngModelChange)="searchWorker($event)"
+           class="form-control"
+           placeholder="Пошук серед працівників">
+  </div>
+
+  <ul class="list-group">
+    <li *ngFor="let worker of workersFiltered" @fadeOut class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <h5 class="mb-1"><a href="" [routerLink]="['/pprofile', worker.patientId]">{{ worker.fullName }}</a></h5>
+        <p class="mb-1">Дата останнього запису: {{ worker.lastRecordDate }}</p>
+        <p class="mb-1">Кількість записів: {{ worker.mRecords.length }}</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

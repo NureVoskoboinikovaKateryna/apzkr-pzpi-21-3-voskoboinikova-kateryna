@@ -1,0 +1,78 @@
+<app-header></app-header>
+
+<div class="card mb-3" *ngIf="loaded; else stillLoading">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Отримувач (Пацієнт)</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <select #patientId="ngModel"
+                name="patientId"
+                [(ngModel)]="notification.patientId"
+                id="specializationSelect1"
+                class="form-control"
+                required>
+          <option value="" disabled selected>Оберіть пацієнта</option>
+          <option *ngFor="let patient of patients;" value="{{ patient.patientId }}">{{ getPatientFullName(patient.patientId) }}</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Відправник (Лікар)</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <select #senderId="ngModel"
+                name="senderId"
+                [(ngModel)]="notification.senderId"
+                id="specializationSelect1"
+                class="form-control"
+                required>
+          <option value="" disabled selected>Оберіть лікаря</option>
+          <option value="0">Система</option>
+          <option *ngFor="let doctor of doctors;" value="{{ doctor.doctorId }}">{{ getDoctorFullName(doctor.doctorId) }}</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Дата</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="datetime-local" class="form-control" [(ngModel)]="notification.date">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Тема</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="notification.title">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Зміст</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="notification.content">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <a (click)="saveChanges()" class="btn btn-info">Зберегти</a>
+        <a (click)="getBack()" class="btn btn-info" style="margin-left: 15px;">Скасувати</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

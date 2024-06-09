@@ -1,0 +1,9 @@
+#registration {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.form-control {
+  border: 1px solid blue;
+}

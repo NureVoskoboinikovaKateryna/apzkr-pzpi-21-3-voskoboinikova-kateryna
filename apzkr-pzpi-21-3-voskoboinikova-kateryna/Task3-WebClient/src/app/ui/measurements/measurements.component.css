@@ -1,0 +1,19 @@
+.list-group {
+    margin-top: 25px;
+}
+
+.list-group-item {
+  border: 1px darkblue solid;
+  border-radius: 5px;
+}
+
+.custom-list {
+  justify-content: space-between; /* Рівномірно розподіляє елементи вздовж головної осі */
+}
+
+.custom-item {
+  width: calc(16.666% - 10px); /* Розраховує ширину для 6 елементів на один ряд */
+  margin-right: 10px; /* Встановлює відстань між елементами */
+  margin-bottom: 10px; /* Встановлює відстань знизу */
+  flex-grow: 0; /* Вимикає розширення елементів за межі визначеної ширини */
+}

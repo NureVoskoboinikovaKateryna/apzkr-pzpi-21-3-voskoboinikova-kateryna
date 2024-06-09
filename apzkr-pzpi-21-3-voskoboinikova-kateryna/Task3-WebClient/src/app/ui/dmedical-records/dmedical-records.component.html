@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+<div id="content" *ngIf="!loading; else stillLoading">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>{{ 'PROFILE.MEDR' | translate }}</h2>
+    <button [routerLink]="['/add-mrecord']" class="btn btn-info">{{ 'PROFILE.ADD_MEDR' | translate }}</button>
+  </div>
+  <ul class="list-group">
+    <li *ngFor="let mrecord of medicalRecords" @fadeOut class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <h5 class="mb-1">{{ mrecord.diagnosis }}</h5>
+        <p class="mb-1">{{ 'NOTIF.FOR' | translate }}: <a href="" [routerLink]="['/pprofile', mrecord.patientId]">{{ mrecord.patientFullName }}</a></p>
+        <p class="mb-1">{{ 'NOTIF.CONTENT' | translate }}: {{ mrecord.medications }}</p>
+        <small>{{ 'NOTIF.DATE' | translate }}: {{ mrecord.visitDate | date: 'dd/MM/yyyy HH:mm:ss' }}</small>
+      </div>
+      <div>
+        <button style="margin-right: 10px;" (click)="deleteMRecord(mrecord.medicalRecordId)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+        <button (click)="editMRecord(mrecord.medicalRecordId)" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

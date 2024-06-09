@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div id="registration">
+
+  <!-- User Type input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="userTypeSelect">{{ 'FORM.USER_T' | translate }}</label>
+    <select userType="ngModel"
+            name="userType"
+            [(ngModel)]="userType"
+            id="userTypeSelect"
+            class="form-control"
+            required>
+      <option value="" disabled selected>{{ 'FORM.USER_T_CHOOSE' | translate }}</option>
+      <option value="Patient">{{ 'FORM.PATIENT' | translate }}</option>
+      <option value="Doctor">{{ 'FORM.DOCTOR' | translate }}</option>
+    </select>
+  </div>
+
+  <ng-template [ngIf]="userType == 'Patient'">
+    <app-patient-register-form [createView]="createView" (onSubmitEvent)="registerPatient($event)"></app-patient-register-form>
+  </ng-template>
+  <ng-template [ngIf]="userType == 'Doctor'">
+    <app-doctor-register-form [createView]="createView" (onSubmitEvent)="registerDoctor($event)"></app-doctor-register-form>
+  </ng-template>
+  <ng-template [ngIf]="userType == 'CompanyManager'">
+    <app-manager-register-form [createView]="createView" (onSubmitEvent)="registerManager($event)"></app-manager-register-form>
+  </ng-template>
+
+</div>

@@ -1,0 +1,13 @@
+<app-header></app-header>
+
+<div id="content">
+  <h2>{{ 'PROFILE.MEDR' | translate }}</h2>
+  <ul class="list-group">
+    <li *ngFor="let mrecord of medicalRecords" class="list-group-item">
+      <h5 class="mb-1">{{ mrecord.diagnosis }}</h5>
+      <p class="mb-1">{{ 'NOTIF.FROM' | translate }}: <a href="" [routerLink]="['/dprofile', mrecord.doctorId]">{{ mrecord.doctorFullName }}</a></p>
+      <p class="mb-1">{{ 'NOTIF.CONTENT' | translate }}: {{ mrecord.medications }}</p>
+      <small>{{ 'NOTIF.DATE' | translate }}: {{ mrecord.visitDate | date: 'dd/MM/yyyy HH:mm:ss' }}</small>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,21 @@
+<app-header></app-header>
+
+<div id="content">
+  <h2>{{ 'NOTIF.LIST' | translate }}</h2>
+  <ul class="list-group">
+    <li *ngFor="let notification of notifications" @fadeOut class="list-group-item">
+      <h5 class="mb-1">{{ notification.title }}</h5>
+
+      <p *ngIf="notification.senderId; else fromSystem" class="mb-1">{{ 'NOTIF.FROM' | translate }}: <a href="" [routerLink]="['/dprofile', notification.senderId]">{{ notification.sender }}</a></p>
+      <ng-template #fromSystem>
+        <p class="mb-1">{{ 'NOTIF.FROM' | translate }}: {{ notification.sender }}</p>
+      </ng-template>
+
+      <p class="mb-1">{{ 'NOTIF.CONTENT' | translate }}: {{ notification.content }}</p>
+      <small>{{ 'NOTIF.DATE' | translate }}: {{ notification.date | date: 'dd/MM/yyyy HH:mm:ss' }}</small>
+      <button class="btn btn-danger btn-sm float-end" (click)="deleteNotification(notification.notificationId)">
+        {{ 'NOTIF.DELETE' | translate }}
+      </button>
+    </li>
+  </ul>
+</div>

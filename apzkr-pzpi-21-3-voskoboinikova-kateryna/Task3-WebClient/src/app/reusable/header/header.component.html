@@ -1,0 +1,59 @@
+<div class="container">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <b style="font-size: 18px;font-weight: 600;">StayHealth</b>
+    </a>
+
+    <ul *ngIf="!isLoggedIn" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a href="#" class="nav-link px-2 link-dark">{{ 'HEADER.HOME' | translate }}</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark">{{ 'HEADER.ABOUT' | translate }}</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark">{{ 'HEADER.FAQS' | translate }}</a></li>
+    </ul>
+
+    <ul *ngIf="isLoggedIn && userInfo.role == 'Пацієнт'" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a [routerLink]="['/pprofile', userId]" class="nav-link px-2 link-dark">{{ 'HEADER.PROFILE' | translate }}</a></li>
+      <li><a [routerLink]="['/notifications']" class="nav-link px-2 link-dark">{{ 'HEADER.NOTIFICATIONS' | translate }}</a></li>
+      <li><a [routerLink]="['/medical-records']" class="nav-link px-2 link-dark">{{ 'HEADER.MEDICAL_RECORDS' | translate }}</a></li>
+      <li><a [routerLink]="['/measurements']" class="nav-link px-2 link-dark">{{ 'HEADER.MEASUREMENTS' | translate }}</a></li>
+    </ul>
+
+    <ul *ngIf="isLoggedIn && userInfo.role == 'Лікар'" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a [routerLink]="['/dprofile', userId]" class="nav-link px-2 link-dark">{{ 'HEADER.PROFILE' | translate }}</a></li>
+      <li><a [routerLink]="['/dnotifications']" class="nav-link px-2 link-dark">{{ 'HEADER.NOTIFICATIONS' | translate }}</a></li>
+      <li><a [routerLink]="['/dmedical-records']" class="nav-link px-2 link-dark">{{ 'HEADER.MEDICAL_RECORDS' | translate }}</a></li>
+      <li><a [routerLink]="['/dpatients']" class="nav-link px-2 link-dark">{{ 'HEADER.PATIENTS' | translate }}</a></li>
+    </ul>
+
+    <ul *ngIf="isLoggedIn && userInfo.role == 'Менеджер'" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a [routerLink]="['/mprofile', userId]" class="nav-link px-2 link-dark">{{ 'HEADER.PROFILE' | translate }}</a></li>
+      <li><a [routerLink]="['/mpatients']" class="nav-link px-2 link-dark">{{ 'HEADER.PATIENTS' | translate }}</a></li>
+    </ul>
+
+    <ul *ngIf="isLoggedIn && userInfo.role == 'Адміністратор'" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a [routerLink]="['/admin-panel']" class="nav-link px-2 link-dark">{{ 'HEADER.ADMIN_PANEL' | translate }}</a></li>
+    </ul>
+
+    <div *ngIf="!isLoggedIn; else elseBlock" class="col-md-3 text-end">
+      <button [routerLink]="['/login']" type="button" class="btn btn-outline-primary me-2">{{ 'HEADER.LOGIN' | translate }}</button>
+      <button [routerLink]="['/register']" type="button" class="btn btn-primary">{{ 'HEADER.REGISTER' | translate }}</button>
+    </div>
+    <ng-template #elseBlock>
+      <div class="text-end">
+        <div class="row d-flex align-items-center">
+          <div class="col-md-9">
+            <div>{{ 'HEADER.GREET' | translate }}, {{ userInfo.name }}</div>
+            <div><small>{{ userInfo.role }}</small></div>
+          </div>
+          <div class="col-md-3">
+            <button (click)="logout()" type="button" class="btn btn-outline-primary">{{ 'HEADER.LOGOUT' | translate }}</button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <div class="language-switcher">
+      <button (click)="switchLanguage('ua')" class="btn btn-outline-primary">UA</button>
+      <button (click)="switchLanguage('en')" class="btn btn-outline-primary">EN</button>
+    </div>
+  </header>
+</div>

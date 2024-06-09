@@ -1,0 +1,105 @@
+<form #form="ngForm" (submit)="onSubmit()" id="registration">
+  <!-- Specialization select -->
+  <div class="form-group mb-4">
+    <label for="specializationSelect">Лікарня</label>
+    <select #companyId="ngModel"
+            name="companyId"
+            [(ngModel)]="registrationData.companyId"
+            id="specializationSelect"
+            class="form-control"
+            required>
+      <option value="" disabled selected>Оберіть лікарню</option>
+      <option *ngFor="let company of companies;" value="{{ company.companyId }}">{{ company.companyName }}</option>
+    </select>
+  </div>
+
+  <!-- Name input -->
+  <div class="form-group mb-4">
+    <label for="nameInput">Ім'я</label>
+    <input #name="ngModel"
+           name="name"
+           [(ngModel)]="registrationData.name"
+           type="text"
+           id="nameInput"
+           class="form-control"
+           required />
+  </div>
+
+  <!-- Last Name input -->
+  <div class="form-group mb-4">
+    <label for="lastNameInput">Прізвище</label>
+    <input #lastName="ngModel"
+           name="lastName"
+           [(ngModel)]="registrationData.lastName"
+           type="text"
+           id="lastNameInput"
+           class="form-control"
+           required />
+  </div>
+
+  <!-- Middle Name input -->
+  <div class="form-group mb-4">
+    <label for="middleNameInput">По батькові</label>
+    <input #middleName="ngModel"
+           name="middleName"
+           [(ngModel)]="registrationData.middleName"
+           type="text"
+           id="middleNameInput"
+           class="form-control" />
+  </div>
+
+  <!-- Email input -->
+  <div class="form-group mb-4">
+    <label for="emailInput">Email адреса</label>
+    <input #email="ngModel"
+           name="email"
+           [(ngModel)]="registrationData.email"
+           type="email"
+           id="emailInput"
+           class="form-control"
+           required />
+  </div>
+
+  <!-- Password input -->
+  <div class="form-group mb-4">
+    <label for="passwordInput">Пароль</label>
+    <input #password="ngModel"
+           name="password"
+           [(ngModel)]="registrationData.password"
+           type="password"
+           id="passwordInput"
+           class="form-control"
+           required
+           minlength="8" />
+  </div>
+
+  <!-- Confirm Password input -->
+  <div class="form-group mb-4">
+    <label for="confirmPasswordInput">Підтвердіть пароль</label>
+    <input #confirmPassword="ngModel"
+           name="confirmPassword"
+           [(ngModel)]="registrationData.confirmPassword"
+           type="password"
+           id="confirmPasswordInput"
+           class="form-control"
+           required
+           minlength="8" />
+  </div>
+
+  <!-- Phone Number input -->
+  <div class="form-group mb-4">
+    <label for="phoneNumberInput">Номер телефону</label>
+    <input #phoneNumber="ngModel"
+           name="phoneNumber"
+           [(ngModel)]="registrationData.phoneNumber"
+           type="tel"
+           id="phoneNumberInput"
+           class="form-control" />
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4">
+    <span *ngIf="!createView">Зареєструватися</span>
+    <span *ngIf="createView">Створити менеджера</span>
+  </button>
+</form>

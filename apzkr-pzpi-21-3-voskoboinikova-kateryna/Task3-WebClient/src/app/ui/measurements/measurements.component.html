@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<div id="content">
+  <h2>{{ 'PROFILE.MEAS_L' | translate }}</h2>
+  <ul class="list-group d-flex flex-row flex-wrap">
+    <li *ngFor="let measurement of measurements" class="list-group-item custom-item">
+      <h5 class="mb-1">{{ measurement.deviceName }}</h5>
+      <p class="mb-1">{{ 'PROFILE.MEAS_V' | translate }}: {{ measurement.measurementValue }}</p>
+      <small>{{ 'NOTIF.DATE' | translate }}: {{ measurement.measurementDate | date: 'dd/MM/yyyy HH:mm:ss' }}</small>
+    </li>
+  </ul>
+</div>

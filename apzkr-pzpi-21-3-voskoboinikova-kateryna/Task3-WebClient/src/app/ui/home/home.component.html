@@ -1,0 +1,76 @@
+<app-header></app-header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+  <!-- About Container -->
+  <div class="w3-container" id="about">
+    <div class="w3-content" style="max-width:900px">
+      <div class="flex-container">
+        <div class="flex-text">
+          <p>
+            <span class="highlight">StayHealth</span> - {{ 'HEADER.ABOUTMAIN' | translate }}
+          </p>
+        </div>
+        <div class="flex-image">
+          <img src="assets/images/main-img.jpg" alt="StayHealth Image" class="responsive-img">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="w3-container w3-center w3-padding-32 w3-light-grey">
+    <h4>{{ 'HEADER.CONTACT' | translate }}</h4>
+    <p>{{ 'HEADER.ADRESS' | translate }}</p>
+    <p>{{ 'HEADER.PHONE' | translate }}: +38 (044) 123-45-67</p>
+    <p>Email: contact&#64;stayhealth.com</p>
+    <p>&copy; 2024 StayHealth - All rights reserved</p>
+  </footer>
+
+
+  <!-- End page content -->
+</div>
+
+<!-- CSS -->
+<style>
+  .flex-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
+
+  .flex-text {
+    flex: 1;
+    padding-right: 20px;
+  }
+
+  .flex-image {
+    flex: 1;
+    text-align: right;
+  }
+
+  .responsive-img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .highlight {
+    color: #0d6efd;
+    font-weight: bold;
+    font-size: 2em;
+  }
+
+  footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.8em;
+  }
+
+  footer p {
+    margin: 5px 0;
+  }
+</style>

@@ -1,0 +1,88 @@
+<app-header></app-header>
+
+<div class="main-body" *ngIf="userLoaded; else stillLoading">
+  <div class="row gutters-sm">
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex flex-column align-items-center text-center">
+            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+            <div class="mt-3">
+              <h4>{{ user.applicationUser.name }}</h4>
+              <p class="text-muted font-size-sm">{{ user.company.companyName }}</p>
+              <button *ngIf="!onlyView" (click)="logout()" class="btn btn-outline-primary">Вийти</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <ul class="list-group list-group-flush" *ngIf="statsLoaded">
+          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+            <h6 class="mb-0">Працівників лікарні</h6>
+            <span class="text-secondary">{{ stats.workersQuantity }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8">
+
+      <div *ngIf="!editingProfile; else editProfile" class="card mb-3">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Повне ім'я</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.fullName }}
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Email</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.applicationUser.email }}
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Телефон</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              +(38){{ user.applicationUser.phoneNumber }}
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Лікарня</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.company.companyName }}
+            </div>
+          </div>
+          <hr *ngIf="!onlyView">
+          <div class="row align-items-center">
+            <div class="col-sm-12">
+              <a *ngIf="!onlyView" (click)="editingProfile = true;" class="btn btn-info">Змінити</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #editProfile>
+        <app-edit-manager-profile (onSaveEvent)="saveManager($event)"
+                                  (onCancelEvent)="cancelEditing()"
+                                  [user]="user">
+        </app-edit-manager-profile>
+      </ng-template>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #stillLoading>
+  Still loading...
+</ng-template>
