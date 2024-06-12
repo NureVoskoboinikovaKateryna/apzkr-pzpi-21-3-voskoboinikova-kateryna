@@ -1,6 +1,0 @@
-@StayHealthIoT_HostAddress = http://localhost:5197
-
-GET {{StayHealthIoT_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
