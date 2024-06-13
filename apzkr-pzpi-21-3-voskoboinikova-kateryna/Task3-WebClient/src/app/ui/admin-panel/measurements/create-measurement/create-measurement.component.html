@@ -58,7 +58,7 @@
     <hr>
     <div class="row align-items-center">
       <div class="col-sm-3">
-        <h6 class="mb-0">Дата виміру</h6>
+        <h6 class="mb-0">{{ 'ADMIN.MEAS_DATE' | translate }}</h6>
       </div>
       <div class="col-sm-9 text-secondary">
         <input type="datetime-local" class="form-control" [(ngModel)]="measurement.measurementDate">
@@ -67,7 +67,7 @@
     <hr>
     <div class="row align-items-center">
       <div class="col-sm-3">
-        <h6 class="mb-0">Значення виміру</h6>
+        <h6 class="mb-0">{{ 'ADMIN.MEAS_VALUE' | translate }}</h6>
       </div>
       <div class="col-sm-9 text-secondary">
         <input type="text" class="form-control" [(ngModel)]="measurement.measurementValue">

@@ -114,7 +114,30 @@
       "MANUF": "Manufacturers",
       "MEDR": "Medical Records",
       "NOTIF": "Notifications",
-      "MEAS": "Measurements"
+      "MEAS": "Measurements",
+      "ADMINPAN": "Administrators management",
+      "ACTION": "Action",
+      "BLOOD_T_NAME": "Title",
+      "BLOODPAN": "Blood type administration",
+      "HOSPAN": "Hospital administration",
+      "HOSNAME": "Hospital name",
+      "HOSMANPAN": "Hospital Managers administration",
+      "DOCPAN": "Doctors administration",
+      "MANFPAN": "Manufacturers administration",
+      "DEVCOUNT": "Devices",
+      "MEASPAN": "Measurement administration",
+      "DEV_T": "Device type",
+      "DEV_T_CHOOSE": "Select device type",
+      "DEV": "Device",
+      "DEV_CHOOSE": "Choose a device",
+      "BMI1": "Underweight (BMI < 18.5)",
+      "BMI2": "Normal weight (BMI 18.5-24.9)",
+      "BMI3": "Overweight (BMI 25-29.9)",
+      "BMI4": "Moderately obese (BMI 30-34.9)",
+      "BMI5": "Severe obesity (BMI 35-39.9)",
+      "BMI6": "Morbid obesity (BMI > 40)",
+      "MEAS_DATE": "Measurement date",
+      "MEAS_VALUE": "Measurement value"
     }
 }
   

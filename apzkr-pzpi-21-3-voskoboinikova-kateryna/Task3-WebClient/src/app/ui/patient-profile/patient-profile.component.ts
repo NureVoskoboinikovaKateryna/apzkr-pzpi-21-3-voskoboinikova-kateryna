@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth/auth.service';
 import { EditingProfileValues } from './edit-patient-profile/edit-patient-profile.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-patient-profile',
@@ -30,7 +32,8 @@ export class PatientProfileComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {
   }
 
@@ -181,17 +184,17 @@ export class PatientProfileComponent implements OnInit {
       let BMI: number = this.stats.weight / (heightM * heightM);
       this.stats.BMI = BMI.toFixed(2);
       if (BMI < 18.5) {
-        this.stats.BMIdesc = "{{ 'ADMIN.BMI1' | translate }}";
+        this.stats.BMIdesc = this.translate.instant('ADMIN.BMI1');
       } else if (18.5 <= BMI && BMI < 24.9) {
-        this.stats.BMIdesc = "Нормальна маса тіла (ІМТ 18.5–24.9)";
+        this.stats.BMIdesc = this.translate.instant('ADMIN.BMI2');
       } else if (25 < BMI && BMI < 29.9) {
-        this.stats.BMIdesc = "Надмірна вага (ІМТ 25–29.9)";
+        this.stats.BMIdesc = this.translate.instant('ADMIN.BMI3');
       } else if (30 < BMI && BMI < 34.9) {
-        this.stats.BMIdesc = "Помірне ожиріння (ІМТ 30–34.9)";
+        this.stats.BMIdesc = this.translate.instant('ADMIN.BMI4');
       } else if (35 < BMI && BMI < 39.9) {
-        this.stats.BMIdesc = "Серйозне ожиріння (ІМТ 35–39.9)";
+        this.stats.BMIdesc = this.translate.instant('ADMIN.BMI5');
       } else {
-        this.stats.BMIdesc = "Морбідне ожиріння (ІМТ > 40)";
+        this.stats.BMIdesc = this.translate.instant('ADMIN.BMI6');
       }
 
       this.stats.tempNormal = 36.6;
